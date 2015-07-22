@@ -1,0 +1,65 @@
+<idea-plugin version="2">
+    <id>eu.inmite.android.plugin.butterknifezelezny</id>
+    <name>Android ButterKnife Zelezny</name>
+    <version>2.3</version>
+    <vendor email="carnero@inmite.eu" url="http://inmite.eu/">inmite</vendor>
+
+    <description><![CDATA[
+      Plugin for generating ButterKnife injections from selected layout XMLs in activities/fragments/adapters.
+      ]]></description>
+
+    <change-notes><![CDATA[
+<html>
+
+ <b>2.3</b> (22/7/2015)
+  <ul>
+    <li>新增点击事件，生成onClick方法/li>
+    <li>改变菜单显示位置</li>
+    <li>修复SupportFragment不能注解的问题</li>
+  </ul>
+  <b>1.1</b> (7/21/2014)
+  <ul>
+    <li>new settings: change default prefix and ViewHolder class name</li>
+    <li>adds ButterKnife inject() and reset() methods if not present</li>
+    <li>dialog can be confirmed by ENTER</li>
+    <li>bugfixes</li>
+  </ul>
+
+  <b>1.0.1</b> (1/6/2014)
+  <ul>
+    <li>Fix for Java 6</li>
+  </ul>
+
+  <b>1.0</b> (12/30/2013)
+  <ul>
+    <li>Initial release</li>
+  </ul>
+</html>
+      ]]></change-notes>
+
+    <idea-version since-build="123.72"/>
+
+    <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+                   on how to target different products -->
+    <depends>com.intellij.modules.lang</depends>
+
+    <actions>
+        <action id="AddInjectionsAction"
+                class="eu.inmite.android.plugin.butterknifezelezny.InjectAction"
+                text="Generate _Butterknife Injections"
+                icon="/eu/inmite/android/plugin/butterknifezelezny/icons/butterknife-zelezny.png"
+                description="Plugin for generating ButterKnife injections from selected layout XMLs in activities/fragments/adapters">
+
+            <keyboard-shortcut
+                    keymap="$default"
+                    first-keystroke="shift control B"/>
+            <!--<add-to-group group-id="GenerateGroup"/>-->
+            <add-to-group group-id="EditorPopupMenu" anchor="first"
+                          relative-to-action="groovyjarjarantlr.CodeGenerator"/>
+        </action>
+    </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable instance="eu.inmite.android.plugin.butterknifezelezny.Settings"/>
+    </extensions>
+</idea-plugin>
